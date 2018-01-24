@@ -82,4 +82,29 @@ public class SringDemoTest {
         context.close();
     }
 
+
+    @Test
+    public void applicationContext6() throws IOException {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(AwareConfig.class);
+
+        AwareService bean = context.getBean(AwareService.class);
+        bean.outputResult();
+        context.close();
+    }
+
+    @Test
+    public void applicationContext7() throws IOException {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(TaskExecutorConfig.class);
+
+        AsyncTaskService bean = context.getBean(AsyncTaskService.class);
+        for (int i = 0; i < 40; i++) {
+            // 执行结果是并发执行，而不是顺序执行
+            bean.executeAsyncTask(i);
+            bean.executeAsyncTaskPlus(i);
+        }
+        context.close();
+    }
+
 }
