@@ -5,9 +5,10 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * user: zhangjianbin <br/>
- * date: 2018/1/19 18:25
+ * date: 2018/1/24 13:09
  */
 @Configuration
 @ComponentScan(basePackages = {"com.myke"})
-public class ScopeConfig {
+public class EventConfig {
+
 }
