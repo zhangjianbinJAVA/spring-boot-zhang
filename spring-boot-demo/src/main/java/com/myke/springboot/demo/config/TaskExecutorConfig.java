@@ -19,7 +19,7 @@ import java.util.concurrent.Executor;
 public class TaskExecutorConfig implements AsyncConfigurer {
 
     /**
-     * 定义线程池 ，获取线得线程池
+     * 返回 ThreadPoolTaskExecutor ，这样就获得了一个基于线程池 TaskExecutor
      *
      * @return
      */

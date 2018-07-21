@@ -1,5 +1,6 @@
 package com.myke.springboot.demo.config;
 
+import com.myke.springboot.demo.condition.service.WindowsListService;
 import com.myke.springboot.demo.event.DemoPublisher;
 import com.myke.springboot.demo.service.*;
 import lombok.extern.slf4j.Slf4j;
@@ -83,6 +84,7 @@ public class SringDemoTest {
     }
 
 
+
     @Test
     public void applicationContext6() throws IOException {
         AnnotationConfigApplicationContext context =
@@ -107,4 +109,27 @@ public class SringDemoTest {
         context.close();
     }
 
+
+    @Test
+    public void applicationContext8() throws IOException, InterruptedException {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(TaskSchedulerConfig.class);
+
+        Thread.sleep(10000L);
+        context.close();
+    }
+
+
+    @Test
+    public void applicationContext9() throws IOException, InterruptedException {
+        AnnotationConfigApplicationContext context =
+                new AnnotationConfigApplicationContext(ConditionConfig.class);
+
+        WindowsListService bean = context.getBean(WindowsListService.class);
+        log.info("windows:{}", bean.showListCmd());
+        log.info("os.name:{}", context.getEnvironment().getProperty("os.name"));
+
+
+        context.close();
+    }
 }

@@ -14,6 +14,7 @@ import org.springframework.context.annotation.Profile;
 @ComponentScan(basePackages = {"com.myke"})
 public class ProfileConfig {
 
+
     @Bean
     @Profile("dev")
     public DemoBean devDemoBean() {
